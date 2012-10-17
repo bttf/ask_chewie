@@ -11,6 +11,9 @@
 				$("#enter_query").toggle("slide", { direction: "up" }, 1000);
 				$.scrollTo('#enter_query input', 800);
 				$("#enter_query input").focus();
+				if ($("#answer_box").is(":visible")) {
+					$("#answer_box").hide("slide", { direction: "up" }, 1000);
+				}
 			}
 			function hello(e) {
 				if (e.keyCode == 13) {	
