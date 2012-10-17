@@ -1,25 +1,84 @@
 <html>
-<head>
-<title>ask chewie</title>
-<link rel='stylesheet' type='text/css' href='index.css' />
-</head>
-<body>
-	<div id='heading'>
-		ask me anything
-	</div>
-	<br />
-	<div id='chewie'>
-		<img src='chewie.jpg' />
-	</div>
-	<hr />
-	<span class='bodytext1'>
-		Enter question here:
-	</span>
-	<div id='input_box'>
-		<form name='askchewie' method='POST' action='index.html'>
-			<input type='textbox' name='question' />
-			<input type='submit' value='ask' />
-		</form>
-	</div>
-</body>
+	<head>
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+		<script src="js/jquery.watermark.min.js"></script>
+		<script src="js/jquery.scrollTo-1.4.3.1-min.js"></script>
+		<script type="text/javascript">
+			function turn_chewie_on() {
+				$("#enter_query").toggle("slide", { direction: "up" }, 1000);
+				$.scrollTo('#enter_query input', 800);
+				$("#enter_query input").focus();
+			}
+			function hello(e) {
+				if (e.keyCode == 13) {	
+					generate_response();
+					$("#enter_query input").select();
+				}
+			}
+			function generate_response() {
+				$("#answer_box").show("slide", { direction: "up" }, 1000);
+				$.scrollTo('#chewies_answer', 800);
+			}
+		</script>
+		<title>ask chewie</title>
+	</head>
+	<body>
+		<div id="intro">
+			<div id="description">
+				<div id="desc_paragraphs">
+				<p>In today's world, Artifical Intelligence has become increasingly prevalent in everyday society. Once a mere figment of the imagination, the concept of AI has grown from a thing of science-fiction to a very present force in reality. Automated phone operators, airline auto-pilots, vending machines, and even cellular telephones are becoming equipped with sophisticated AI that would leave the average human wondering whether or not a computer could really be behind the seemingly intelligent and responsive interactions that we experience today. It is only a matter of time before the intelligence of these machines will eclipse that of our own, and it is then that we may venture towards new frontiers with the aide of Artifical Intelligence.</p>
+				<p>Scientists here at our labs have taken these facts into consideration and have sought to pioneer the latest in cutting-edge technology in the field of AI. Their mission is to implement a working brain that is able to think, conceive, question, ponder and react to the ordinary human experience. Furthermore, they have sought to connect this self-aware mind to an interface in which humans can easily interact with it and discover its inner-workings first-hand. In the early stages of design, our scientists did not forsee an inevitable problem: the need to shape this sentient entity with a personality and with character that would allow it to fully exercise its intellect much like we humans do. After much deliberation over a selection of possible candidates, it was decided that CHEWBACCA of Star Wars fame would be used as an archetype and ideal for the shape and character of the AI bot. </p>
+				<p>What you will find here is a fully-functional, highly-sentient instance of CHEWBACCA, in full AI form, ready to act and respond to any inquiry he receives. Hundreds upon hundreds of linguistic and meta-cognitive algorithms will be cycled through every time a question is submitted; the result of which, will reflect the deep inner-workings of a personality we all know and love. Please enjoy and do not be frightened if the responses of our CHEWBONGA seem all the more life-like; he is designed that way.
+				</p>
+				</div>
+			</div>
+			<div id="chewie_pic">
+				<img src="img/chewie.jpeg" />
+			</div>
+		</div>
+
+		<div id="begin_box">
+			<table>
+				<tr>
+					<td><a href="javascript:turn_chewie_on()"><img src="img/onoff.png" /></a></td>
+				</tr>
+			</table>
+		</div>
+
+		<!-- input: ASK CHEWIE -->
+		<div id="enter_query">
+			<p>Enter a question or statement:</p>
+			<input type="text" class="query" name="query" onkeypress="return hello(event)"/>
+		</div>
+
+		<!-- div id="answer_box">
+			<table>
+				<tr>
+					<td class="chewie_says" colspan="2">Chewie says...</td>
+				</tr>
+				<tr>
+					<td class="chewies_answer">testing</td>
+					<td class="chewies_face"></td>
+				</tr>
+			</table>
+		</div-->
+
+		<div id="answer_box">
+			<div id="chewie_says">
+				Chewie says ...
+			</div>
+			<div id="chewies_answer">
+				<p>Ahhhhrrruuunngghh!!!! NNrruruuuunnhghhhhhungh!!</p>
+			</div>
+			<div id="chewies_pic">
+				<img src="img/chewbacca2.gif" />
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			$("#enter_query input").watermark("Press enter to submit");
+		</script>
+	</body>
 </html>

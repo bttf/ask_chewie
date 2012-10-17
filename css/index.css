@@ -1,0 +1,102 @@
+body {
+}
+
+#intro {
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #8A8A8A;
+	width: 66%;
+	border-radius: 15px;
+	overflow: hidden;
+}
+
+#chewie_pic img {
+	height: 46%;
+}
+#chewie_pic {
+	width: 33%;
+	float: right;
+	padding-top: 50px;
+}
+#description {
+	float: left;
+	width: 66%;
+}
+
+#desc_paragraphs {
+	padding-top: 36px;
+	padding-bottom: 36px;
+	padding-left: 25px;
+	padding-right: 25px;
+	font-family: georgia;
+	font-size:12px;
+}
+
+#enter_query {
+	width: 66%;
+	margin-top: 25px;
+	margin-left: auto;
+	margin-right: auto;
+	display: none;
+}
+
+#enter_query p {
+	font-family: monospace;
+	font-size: 24px;
+	margin-bottom: 0px;
+}
+
+.query {
+     background-color: #dddddd;
+     border: medium solid #000000;
+     border-radius: 5px;
+     font-size: 16;
+     font-family: monospace;
+     font-style: normal;
+     padding: 5px;
+     width: 100%;
+}
+
+#begin_box {
+	width: 64%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 25px;
+}
+
+#begin_box img {
+	height: 25px;
+}
+
+#answer_box {
+	margin-top: 25px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #8A8A8A;
+	width: 66%;
+	border-radius: 15px;
+	display: none;
+	overflow: hidden;
+}
+
+#chewie_says {
+	font-family: verdana;
+	font-weight: bold;
+	margin-top: 10px;
+	margin-left: 10px;
+	margin-bottom: 10px;
+}
+
+#chewies_answer {
+	font-family: georgia;
+	font-size: 36px;
+	width: 70%;
+	margin-left: 25px;
+	float: left;
+}
+
+#chewies_pic img {
+	float: right;
+	margin-right: 10px;
+	width: 15%;
+}
