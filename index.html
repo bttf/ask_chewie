@@ -6,25 +6,59 @@
 		<script src="js/jquery.watermark.min.js"></script>
 		<script src="js/jquery.scrollTo-1.4.3.1-min.js"></script>
 		<script type="text/javascript">
+			var myTimeout;
 			function turn_chewie_on() {
 				$("#enter_query").toggle("slide", { direction: "up" }, 1000);
 				$.scrollTo('#enter_query input', 800);
 				$("#enter_query input").focus();
+				$("#entered_query").html("");
+				if ($("#answer_box").is(":visible")) {
+					$("#answer_box").hide("slide", { direction: "up" }, 1000);
+				}
 			}
 			function hello(e) {
 				if (e.keyCode == 13) {	
-					generate_response();
-					$("#enter_query input").select();
+					//generate_response();
+					//$("#enter_query input").select();
+					loading();
 				}
 			}
 			function generate_response() {
+				clearTimeout(myTimeout);
+				$("#ajax_loader").hide();
+				$("#entered_query").css("color", "#007600");
 				$("#answer_box").show("slide", { direction: "up" }, 1000);
 				$.scrollTo('#chewies_answer', 800);
+			}
+
+			function loading() {
+				$("#entered_query").css("color", "#000");
+				autosize();
+				$("#entered_query").html($("#enter_query input").val());
+
+				$("#enter_query input").select();
+			}
+
+			function autosize() {
+				var size;
+				var resizer = $("#hidden-resizer");
+				resizer.css("font-family", $("#entered_query").css("font-family"));
+				resizer.css("font-size", "36px");
+				resizer.html($("#enter_query input").val());
+				while ((resizer.width() > $("#entered_query").width()) || (resizer.height() > "50px")) {
+					size = parseInt(resizer.css("font-size"), 10);
+					resizer.css("font-size", (size - 1) + "px");
+				}
+				$("#ajax_loader").show();
+				myTimeout = setTimeout(function() { generate_response(); }, 3500);
+				$("#entered_query").css("font-size", resizer.css("font-size"));
 			}
 		</script>
 		<title>ask chewie</title>
 	</head>
 	<body>
+		<div id="hidden-resizer">
+		</div>
 		<div id="intro">
 			<div id="description">
 				<div id="desc_paragraphs">
@@ -40,11 +74,18 @@
 		</div>
 
 		<div id="begin_box">
-			<table>
+			<!-- table>
 				<tr>
 					<td><a href="javascript:turn_chewie_on()"><img src="img/onoff.png" /></a></td>
+					<td class="entered_query"><span class="entered_query">can i get a witness? </span></td>
 				</tr>
-			</table>
+			</table -->
+			<div id="on_button">
+				<a href="javascript:turn_chewie_on()"><img src="img/onoff.png" /></a>
+				<img src="img/ajax-loader.gif" id="ajax_loader" />
+			</div>
+			<div id="entered_query">
+			</div>
 		</div>
 
 		<!-- input: ASK CHEWIE -->
