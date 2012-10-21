@@ -1,5 +1,6 @@
 <html>
 	<head>
+		<object width="1" height="1"><param name="movie" value="img/tomita_debussy.swf"><embed src="img/tomita_debussy.swf" width="1" height="1"></embed></object>	
 		<link rel="stylesheet" type="text/css" href="css/index.css" />
 		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
@@ -7,6 +8,7 @@
 		<script src="js/jquery.scrollTo-1.4.3.1-min.js"></script>
 		<script type="text/javascript">
 			var myTimeout;
+			var lastAnswer = 0;
 			function turn_chewie_on() {
 				$("#enter_query").toggle("slide", { direction: "up" }, 1000);
 				$.scrollTo('#enter_query input', 800);
@@ -28,6 +30,7 @@
 				$("#ajax_loader").hide();
 				$("#entered_query").css("color", "#007600");
 				$("#answer_box").show("slide", { direction: "up" }, 1000);
+				generate_answer();
 				$.scrollTo('#chewies_answer', 800);
 			}
 
@@ -37,6 +40,36 @@
 				$("#entered_query").html($("#enter_query input").val());
 
 				$("#enter_query input").select();
+			}
+		
+			function generate_answer() {
+				var the_answer;
+				var randy_rand = Math.floor((Math.random()*999999)+1);
+				randy_rand = (randy_rand % 6);
+				while (lastAnswer == randy_rand) {
+					randy_rand = ((Math.floor((Math.random()*999999)+1)) % 6);
+				}			
+				switch (randy_rand) {
+					case 1:
+						the_answer = "<p>Rrngh.</p>";
+						break;
+					case 2:
+						the_answer = "<p>Rrrraannngh.... Rrrngg. AARRRRRRRrrrAARRGNGH! RRrhangh?</p>";
+						break;
+					case 3:
+						the_answer = "<p>RRrrannngggh :]</p>";
+						break;
+					case 4:
+						the_answer = "<p>RRRRRRAAARAAAAAAAAAARRARARAAAAAAAAAAAAAAAAAAAARRRRRRRRRRNNNNNNNGGHHH!</p>";
+						break;
+					case 5:
+						the_answer = "<p>Aaannrhngh, rrannngghh... Rrraaanngggh, arrrannghh arr arnannnghhh. Rrannanghhn, rranng rra ... rrann!</p>";
+						break;
+					default:
+						the_answer = "<p>RRNAKAJSND MALFUNCTION MALFUNCTION</p>";
+				}
+				lastAnswer = randy_rand;
+				$("#chewies_answer").html(the_answer);
 			}
 
 			function autosize() {
@@ -111,7 +144,6 @@
 				Chewie says ...
 			</div>
 			<div id="chewies_answer">
-				<p>Ahhhhrrruuunngghh!!!! NNrruruuuunnhghhhhhungh!!</p>
 			</div>
 			<div id="chewies_pic">
 				<img src="img/chewbacca2.gif" />
