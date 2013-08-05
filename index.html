@@ -1,6 +1,5 @@
 <html>
 	<head>
-		<object width="1" height="1"><param name="movie" value="img/tomita_debussy.swf"><embed src="img/tomita_debussy.swf" width="1" height="1"></embed></object>	
 		<link rel="stylesheet" type="text/css" href="css/index.css" />
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
@@ -9,6 +8,13 @@
 		<script type="text/javascript">
 			var myTimeout;
 			var lastAnswer = 0;
+      var tomita_debussy = new Audio("audio/tomita_debussy.ogg");
+
+      var load_music = function() {
+        tomita_debussy.preload = "auto";
+        tomita_debussy.play();
+      };
+
 			function turn_chewie_on() {
 				$("#enter_query").toggle("slide", { direction: "up" }, 1000);
 				$.scrollTo('#enter_query input', 800);
@@ -86,6 +92,8 @@
 				myTimeout = setTimeout(function() { generate_response(); }, 3500);
 				$("#entered_query").css("font-size", resizer.css("font-size"));
 			}
+
+      window.onload = load_music;
 		</script>
 		<title>ask chewie</title>
 	</head>
